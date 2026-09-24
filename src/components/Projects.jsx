@@ -12,7 +12,7 @@ const projects = [
 
   {
     title: 'Enterprise RAG Platform with Gemini and Cross-Encoder',
-    img: '/images/rag.png',
+    img: '/images/rag-dark.png',
     github: 'https://github.com/Sriram1003/Enterprise-Retrieval-Augmented-Generation-Platform',
     desc: 'Advanced RAG platform with Gemini and Cross-Encoder'
   },
