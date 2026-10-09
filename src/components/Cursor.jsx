@@ -3,16 +3,13 @@ import { gsap } from 'gsap';
 
 const Cursor = () => {
   const cursorRef = useRef(null);
-  const trailRef = useRef(null);
   const glowRef = useRef(null);
 
   useEffect(() => {
     const cursor = cursorRef.current;
-    const trail = trailRef.current;
     const glow = glowRef.current;
 
     let mouseX = -200, mouseY = -200;
-    let trailX = -200, trailY = -200;
     let velX = 0, velY = 0;
     let prevX = -200, prevY = -200;
     let tiltAngle = 0;
@@ -42,15 +39,13 @@ const Cursor = () => {
     };
 
     const onEnterInteractive = () => {
-      gsap.to(cursor, { scale: 1.3, duration: 0.3, ease: 'power2.out' });
-      gsap.to(trail, { width: 55, height: 55, borderColor: 'rgba(201,165,90,0.9)', duration: 0.3 });
-      gsap.to(glow, { opacity: 0.5, scale: 1.3, duration: 0.3 });
+      if (cursor) gsap.to(cursor, { scale: 1.3, duration: 0.3, ease: 'power2.out' });
+      if (glow) gsap.to(glow, { opacity: 0.5, scale: 1.3, duration: 0.3 });
     };
 
     const onLeaveInteractive = () => {
-      gsap.to(cursor, { scale: 1, duration: 0.3, ease: 'power2.out' });
-      gsap.to(trail, { width: 36, height: 36, borderColor: 'rgba(201,165,90,0.35)', duration: 0.3 });
-      gsap.to(glow, { opacity: 0.25, scale: 1, duration: 0.3 });
+      if (cursor) gsap.to(cursor, { scale: 1, duration: 0.3, ease: 'power2.out' });
+      if (glow) gsap.to(glow, { opacity: 0.25, scale: 1, duration: 0.3 });
     };
 
     window.addEventListener('mousemove', onMouseMove);
@@ -64,16 +59,10 @@ const Cursor = () => {
       el.addEventListener('mouseleave', onLeaveInteractive);
     });
 
-    const speed = 0.13;
     const animate = () => {
-      // Smooth trail follow
-      trailX += (mouseX - trailX) * speed;
-      trailY += (mouseY - trailY) * speed;
-
       // Direct position for cursor arrow
-      gsap.set(cursor, { x: mouseX - 6, y: mouseY - 4 });
-      gsap.set(trail, { x: trailX - 18, y: trailY - 18 });
-      gsap.set(glow, { x: mouseX - 20, y: mouseY - 20 });
+      if (cursor) gsap.set(cursor, { x: mouseX - 6, y: mouseY - 4 });
+      if (glow) gsap.set(glow, { x: mouseX - 20, y: mouseY - 20 });
 
       requestAnimationFrame(animate);
     };
@@ -106,22 +95,6 @@ const Cursor = () => {
           opacity: 0.25,
           filter: 'blur(6px)',
           willChange: 'transform',
-        }}
-      />
-
-      {/* Lagging orbit ring */}
-      <div
-        ref={trailRef}
-        style={{
-          position: 'fixed',
-          top: 0, left: 0,
-          width: 36, height: 36,
-          border: '1px solid rgba(201,165,90,0.35)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          zIndex: 9997,
-          willChange: 'transform',
-          backdropFilter: 'blur(0px)',
         }}
       />
 

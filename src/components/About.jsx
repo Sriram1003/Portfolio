@@ -22,6 +22,7 @@ const aiProjects = [
     title: 'Enterprise RAG Platform with Gemini and Cross-Encoder',
     img: '/images/rag.png',
     github: 'https://github.com/Sriram1003/Enterprise-Retrieval-Augmented-Generation-Platform',
+    demo: 'https://enterprise-retrieval-augmented-gene.vercel.app/',
     desc: 'Advanced RAG platform with Gemini and Cross-Encoder'
   },
 
@@ -289,7 +290,81 @@ const About = () => {
             </span>
           </div>
         </div>
+
+        {/*Publications */}
+        <div
+          onClick={() => handleCardClick('pub')}
+          style={{
+            position: 'relative',
+            padding: '2.5rem 2rem',
+            border: `1px solid ${activeCard === 'pub' ? 'rgba(201,165,90,0.7)' : 'rgba(201,165,90,0.15)'}`,
+            background: activeCard === 'pub' ? 'rgba(201,165,90,0.07)' : 'rgba(255,255,255,0.03)',
+            cursor: 'none',
+            transition: 'all 0.4s ease',
+            transformStyle: 'preserve-3d',
+            boxShadow: activeCard === 'pub' ? '0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(201,165,90,0.08)' : 'none',
+          }}
+          onMouseOver={e => {
+            if (activeCard !== 'pub') {
+              e.currentTarget.style.borderColor = 'rgba(201,165,90,0.4)';
+              e.currentTarget.style.transform = 'translateY(-6px) rotateX(4deg)';
+            }
+          }}
+          onMouseOut={e => {
+            if (activeCard !== 'pub') {
+              e.currentTarget.style.borderColor = 'rgba(201,165,90,0.15)';
+              e.currentTarget.style.transform = '';
+            }
+          }}
+        >
+          <span style={{ fontSize: '3rem', fontStyle: 'italic', color: activeCard === 'pub' ? 'rgba(201,165,90,0.25)' : 'rgba(201,165,90,0.1)', position: 'absolute', top: '1rem', right: '1.5rem', fontWeight: 300, fontFamily: 'Times New Roman, serif' }}>03</span>
+          <h4 style={{ fontFamily: 'Times New Roman, serif', fontStyle: 'italic', fontSize: '1.3rem', color: '#ffffff', marginBottom: '0.8rem' }}>Publications</h4>
+          <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.7 }}>Real-Time Traffic Surveillance and Anomaly Detection using Deep Learning and Computer Vision Techniques IEEE Jul 1, 2026.</p>
+          <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '0.7rem', letterSpacing: '3px', textTransform: 'uppercase', color: '#c9a55a' }}>
+              {activeCard === 'pub' ? '▲ Hide Paper' : '▼ View Paper'}
+            </span>
+          </div>
+        </div>
+
+        {/* AI Creative Production */}
+        <div
+          onClick={() => handleCardClick('creative')}
+          style={{
+            position: 'relative',
+            padding: '2.5rem 2rem',
+            border: `1px solid ${activeCard === 'creative' ? 'rgba(201,165,90,0.7)' : 'rgba(201,165,90,0.15)'}`,
+            background: activeCard === 'creative' ? 'rgba(201,165,90,0.07)' : 'rgba(255,255,255,0.03)',
+            cursor: 'none',
+            transition: 'all 0.4s ease',
+            transformStyle: 'preserve-3d',
+            boxShadow: activeCard === 'creative' ? '0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(201,165,90,0.08)' : 'none',
+          }}
+          onMouseOver={e => {
+            if (activeCard !== 'creative') {
+              e.currentTarget.style.borderColor = 'rgba(201,165,90,0.4)';
+              e.currentTarget.style.transform = 'translateY(-6px) rotateX(4deg)';
+            }
+          }}
+          onMouseOut={e => {
+            if (activeCard !== 'creative') {
+              e.currentTarget.style.borderColor = 'rgba(201,165,90,0.15)';
+              e.currentTarget.style.transform = '';
+            }
+          }}
+        >
+          <span style={{ fontSize: '3rem', fontStyle: 'italic', color: activeCard === 'creative' ? 'rgba(201,165,90,0.25)' : 'rgba(201,165,90,0.1)', position: 'absolute', top: '1rem', right: '1.5rem', fontWeight: 300, fontFamily: 'Times New Roman, serif' }}>04</span>
+          <h4 style={{ fontFamily: 'Times New Roman, serif', fontStyle: 'italic', fontSize: '1.3rem', color: '#ffffff', marginBottom: '0.8rem' }}>AI Creative Production</h4>
+          <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.7 }}>AI Content Creator & Generative AI Curator.</p>
+          <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '0.7rem', letterSpacing: '3px', textTransform: 'uppercase', color: '#c9a55a' }}>
+              {activeCard === 'creative' ? '▲ Hide Work' : '▼ View Work'}
+            </span>
+          </div>
+        </div>
       </div>
+
+
 
       {/* ── Animated Projects Reveal Panel ── */}
       <div
@@ -306,13 +381,13 @@ const About = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
           <div style={{ flex: 1, height: '1px', background: 'rgba(201,165,90,0.15)' }} />
           <span style={{ fontSize: '0.7rem', letterSpacing: '4px', textTransform: 'uppercase', color: '#c9a55a' }}>
-            {activeCard === 'web' ? 'Web Development Projects' : activeCard === 'ai' ? 'AI & ML Projects' : ''}
+            {activeCard === 'web' ? 'Web Development Projects' : activeCard === 'ai' ? 'AI & ML Projects' : activeCard === 'pub' ? 'Publication Details' : activeCard === 'creative' ? 'AI Creative Production' : ''}
           </span>
           <div style={{ flex: 1, height: '1px', background: 'rgba(201,165,90,0.15)' }} />
         </div>
 
         {/* Two-column sorted grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: activeCard === 'web' || activeCard === 'ai' ? '1fr' : '1fr 1fr', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
           {/* Web Dev Column */}
           {activeCard === 'web' && (
             <div>
@@ -327,6 +402,99 @@ const About = () => {
             <div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.5rem' }}>
                 {aiProjects.map(p => <MiniProjectCard key={p.title} project={p} />)}
+              </div>
+            </div>
+          )}
+
+          {/* Creative Column */}
+          {activeCard === 'creative' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'stretch' }}>
+                <div style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.9rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+
+                  <div style={{ marginBottom: '2rem' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.2rem' }}>
+                      <h5 style={{ color: '#fff', fontSize: '1.05rem', margin: 0 }}>AI Content Creator & Generative AI Curator</h5>
+                      <span style={{ color: '#c9a55a', fontSize: '0.75rem', fontStyle: 'italic' }}>Last 3 Months</span>
+                    </div>
+                    <p style={{ color: 'rgba(201,165,90,0.7)', fontSize: '0.75rem', marginBottom: '0.8rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Generative Video • Prompting</p>
+                    <ul style={{ listStyleType: 'none', paddingLeft: 0, margin: 0 }}>
+                      <li style={{ marginBottom: '0.6rem', position: 'relative', paddingLeft: '1.2rem' }}>
+                        <span style={{ position: 'absolute', left: 0, color: '#c9a55a' }}>–</span> Curate, generate, and publish daily visual content focusing on the latest advancements in generative AI filmmaking, building an engaged audience around AI cinematic techniques and foundational model updates.
+                      </li>
+                      <li style={{ marginBottom: '0.6rem', position: 'relative', paddingLeft: '1.2rem' }}>
+                        <span style={{ position: 'absolute', left: 0, color: '#c9a55a' }}>–</span> Experiment extensively with emerging T2V and I2V models (Runway Gen-3, Kling, Luma) to test the limits of character consistency, physics emulation, and cinematic camera movement.
+                      </li>
+                      <li style={{ margin: 0, position: 'relative', paddingLeft: '1.2rem' }}>
+                        <span style={{ position: 'absolute', left: 0, color: '#c9a55a' }}>–</span> Analyze and troubleshoot AI-generation artifacts and continuity breaks, comparing outputs across different diffusion models to identify the most production-ready workflows.
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h5 style={{ color: '#fff', fontSize: '1.05rem', margin: 0, marginBottom: '0.2rem' }}>
+                      Cinematic AI Filmmaking Portfolio
+                    </h5>
+                    <p style={{ color: 'rgba(201,165,90,0.7)', fontSize: '0.75rem', marginBottom: '0.8rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Midjourney • Runway • ComfyUI</p>
+                    <ul style={{ listStyleType: 'none', paddingLeft: 0, margin: 0 }}>
+                      <li style={{ marginBottom: '0.6rem', position: 'relative', paddingLeft: '1.2rem' }}>
+                        <span style={{ position: 'absolute', left: 0, color: '#c9a55a' }}>–</span> Directed and generated a visual concept sequence utilizing Midjourney for storyboarding and establishing shots, and Runway Gen-3/Kling for cinematic motion and temporal consistency.
+                      </li>
+                      <li style={{ marginBottom: '0.6rem', position: 'relative', paddingLeft: '1.2rem' }}>
+                        <span style={{ position: 'absolute', left: 0, color: '#c9a55a' }}>–</span> Developed complex prompt engineering pipelines to dictate specific cinematography principles, including exact camera angles, focal lengths, volumetric lighting, and dramatic mood setups.
+                      </li>
+                      <li style={{ margin: 0, position: 'relative', paddingLeft: '1.2rem' }}>
+                        <span style={{ position: 'absolute', left: 0, color: '#c9a55a' }}>–</span> Maintained character, wardrobe, and environmental visual continuity across multiple generated shots, utilizing seed control and image-to-image (I2I) techniques to build a cohesive narrative.
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center', height: '100%' }}>
+                  <div style={{ flex: 1, width: '100%', position: 'relative', minHeight: 250 }}>
+                    <img src="/images/AI Creative Production.png" alt="AI Creative Studio Screenshot" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} />
+                  </div>
+                  <a href="https://flow.google.com/shared/video/4918f3f4-2299-4beb-8051-263b5736217e" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0, display: 'inline-block', padding: '0.8rem 1.5rem', border: '1px solid rgba(201,165,90,0.7)', color: '#c9a55a', textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', transition: 'all 0.3s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(201,165,90,0.1)'; e.currentTarget.style.color = '#fff'; }} onMouseOut={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#c9a55a'; }}>
+                    View Video
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Publications Column */}
+          {activeCard === 'pub' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'stretch' }}>
+                <div style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, fontSize: '0.95rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <p style={{ marginBottom: '1.5rem' }}>
+                    📄 Our research paper, "Real-Time Traffic Surveillance and Anomaly Detection using Deep Learning and Computer Vision Techniques," has been published in the proceedings of the 2026 4th International Conference (IEEE).
+                  </p>
+                  <p style={{ marginBottom: '1.5rem' }}>
+                    Rapid urbanization and rising traffic density continue to outpace traditional law-enforcement methods, which depend on fixed roadside cameras that offer limited coverage and poor scalability. In this work we present a smart traffic monitoring platform built on the YOLOv8 architecture that unifies several capabilities into a single real-time pipeline:
+                  </p>
+                  <ul style={{ listStyleType: 'none', paddingLeft: 0, marginBottom: '1.5rem' }}>
+                    <li style={{ marginBottom: '0.5rem' }}>🔹 Multi-class vehicle detection — up to 92% accuracy</li>
+                    <li style={{ marginBottom: '0.5rem' }}>🔹 Automatic helmet-violation detection — 89% accuracy</li>
+                    <li style={{ marginBottom: '0.5rem' }}>🔹 Real-time velocity estimation for over-speeding analysis</li>
+                    <li style={{ marginBottom: '0.5rem' }}>🔹 OCR-based license plate identification</li>
+                    <li style={{ marginBottom: '0.5rem' }}>🔹 A specialized multi-object tracking module that preserves vehicle identities across consecutive frames for precise behaviour analysis</li>
+                  </ul>
+                  <p style={{ marginBottom: '1.5rem' }}>
+                    The key contribution is moving beyond frame-by-frame detection toward sustained behavioural analysis, while maintaining the processing speed that real-world deployment demands.
+                  </p>
+                  <p style={{ color: 'rgba(201,165,90,0.9)', fontStyle: 'italic' }}>
+                    Grateful to my co-authors D. Parvateswara Rao, Gaja Sriram, Gangolu Satish and Mogilipaka Gouthami for the collaboration.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center', height: '100%' }}>
+                  <div style={{ flex: 1, width: '100%', position: 'relative', minHeight: 0 }}>
+                    <img src="/images/Research Paper.png" alt="Research Paper Screenshot" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} />
+                  </div>
+                  <a href="https://ieeexplore.ieee.org/abstract/document/11581121" target="_blank" rel="noopener noreferrer" style={{ flexShrink: 0, display: 'inline-block', padding: '0.8rem 1.5rem', border: '1px solid rgba(201,165,90,0.7)', color: '#c9a55a', textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '2px', textTransform: 'uppercase', transition: 'all 0.3s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(201,165,90,0.1)'; e.currentTarget.style.color = '#fff'; }} onMouseOut={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#c9a55a'; }}>
+                    View Publication
+                  </a>
+                </div>
               </div>
             </div>
           )}

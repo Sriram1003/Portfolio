@@ -12,8 +12,10 @@ const projects = [
 
   {
     title: 'Enterprise RAG Platform with Gemini and Cross-Encoder',
-    img: '/images/rag-dark.png',
+    category: 'AI projects',
+    img: '/images/rag.png',
     github: 'https://github.com/Sriram1003/Enterprise-Retrieval-Augmented-Generation-Platform',
+    demo: 'https://enterprise-retrieval-augmented-gene.vercel.app/',
     desc: 'Advanced RAG platform with Gemini and Cross-Encoder'
   },
 
@@ -59,16 +61,31 @@ const projects = [
     img: '/images/Fuel1.jpg',
     github: 'https://github.com/Sriram1003/Fuel-efficiency-prediction',
     desc: 'Regression ML model predicting vehicle fuel efficiency from engine and design parameters.'
+  },
+  {
+    title: 'Real-Time Traffic Surveillance Paper',
+    category: 'Publications',
+    img: '/images/Research Paper.png',
+    demo: 'https://ieeexplore.ieee.org/abstract/document/11581121',
+    desc: 'IEEE Research Paper on anomaly detection and traffic surveillance using Deep Learning and Computer Vision.'
+  },
+  {
+    title: 'AI Creative Studio',
+    category: 'Creative Production',
+    img: '/images/AI Creative Production.png',
+    demo: 'https://flow.google.com/shared/video/4918f3f4-2299-4beb-8051-263b5736217e',
+    desc: 'Showcase of cinematic AI filmmaking, generative video, and complex prompt engineering.'
   }
 ];
 
-const FILTERS = ['All', 'AI projects', 'Web development'];
+const FILTERS = ['All', 'AI projects', 'Web development', 'Publications', 'Creative Production'];
 
 const Projects = () => {
   const [active, setActive] = useState('All');
   const sectionRef = useRef(null);
 
   const filtered = active === 'All' ? projects : projects.filter(p => p.category === active);
+  console.log('Filtered projects:', filtered.map(p => p.title));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
